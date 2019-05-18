@@ -52,3 +52,22 @@ vector<Identifier> QualifiedIdentifier::identifiers()
 {
   return _ids;
 }
+
+// -- QualifiedIdentifierList
+
+QualifiedIdentifierList::QualifiedIdentifierList(const vector<string>& qids)
+{
+  for (auto qid : qids)
+    _qids.push_back(QualifiedIdentifier {qid});
+}
+
+QualifiedIdentifierList::QualifiedIdentifierList(const vector<QualifiedIdentifier>& qids)
+{
+  for (auto qid : qids)
+    _qids.push_back(qid);
+}
+
+vector<QualifiedIdentifier> QualifiedIdentifierList::qualifiedIdentifiers()
+{
+  return _qids;
+}

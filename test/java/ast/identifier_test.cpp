@@ -64,3 +64,27 @@ BOOST_AUTO_TEST_CASE ( create_qualified_identifier_from_ids )
   QualifiedIdentifier qid {ids};
   test_QualifiedIdentifier(qid);
 }
+
+// -- QualifiedIdentifierList
+
+BOOST_AUTO_TEST_CASE ( create_qualified_identifier_list_from_strings )
+{
+  vector<string> data {"java.lang.String", "java.utils.List"};
+  QualifiedIdentifierList list {data};
+  auto qids = list.qualifiedIdentifiers();
+
+  BOOST_TEST( qids.size() == 2 );
+  test_QualifiedIdentifier(qids[0]);
+}
+
+BOOST_AUTO_TEST_CASE ( create_qualified_identifier_list_from_qualified_identifiers )
+{
+  QualifiedIdentifier q1 {"java.lang.String"};
+  QualifiedIdentifier q2 {"java.utils.List"};
+  vector<QualifiedIdentifier> data {q1, q2};
+  QualifiedIdentifierList list {data}; 
+  auto qids = list.qualifiedIdentifiers();
+
+  BOOST_TEST( qids.size() == 2 );
+  test_QualifiedIdentifier(qids[0]);
+}
