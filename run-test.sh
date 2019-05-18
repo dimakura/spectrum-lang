@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FILES="src/java/*.cpp test/java/*.cpp"
+FILES="src/java/ast/*.cpp test/java/ast/*.cpp"
 OUTPUT="./test.out"
 COMPILER="g++"
 LANGUAGE="c++1z"
