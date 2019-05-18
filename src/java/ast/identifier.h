@@ -1,4 +1,6 @@
 #include <string>
+#include <vector>
+#include <stdexcept>
 
 #pragma once
 
@@ -13,5 +15,17 @@ namespace spectrum::java::ast {
 
     private:
       string _name;
+  };
+
+  class QualifiedIdentifier {
+    public:
+      QualifiedIdentifier(const string&);
+      QualifiedIdentifier(const vector<string>& names);
+      QualifiedIdentifier(const vector<Identifier>& ids);
+      ~QualifiedIdentifier() = default;
+      vector<Identifier> identifiers();
+
+    private:
+      vector<Identifier> _ids;
   };
 }
