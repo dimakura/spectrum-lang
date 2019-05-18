@@ -2,9 +2,9 @@
 
 #pragma once
 
-namespace spectrum {
-  using namespace std;
+using namespace std;
 
+namespace spectrum::java::ast {
   class Identifier {
     public:
       Identifier(string);
@@ -12,6 +12,6 @@ namespace spectrum {
       string name();
 
     private:
-      std::string _name;
+      string _name;
   };
 }
