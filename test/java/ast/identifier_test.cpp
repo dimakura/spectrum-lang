@@ -9,7 +9,7 @@ using namespace spectrum::java::ast;
 
 BOOST_AUTO_TEST_CASE ( create_identifiers )
 {
-  vector<string> valid_names {"a", "f1", "_a", "__"};
+  vector<string> valid_names {"a", "f1", "_a", "__", "a_b", "a1b", "A", "B1"};
 
   for (const string& name : valid_names) {
     Identifier id {name};
@@ -19,7 +19,7 @@ BOOST_AUTO_TEST_CASE ( create_identifiers )
 
 BOOST_AUTO_TEST_CASE ( create_invalid_identifiers )
 {
-  vector<string> invalid_names {"1", "1a", ""};
+  vector<string> invalid_names {"1", "1a", "", "a b"};
 
   for (const string& name: invalid_names) {
     BOOST_CHECK_EXCEPTION(

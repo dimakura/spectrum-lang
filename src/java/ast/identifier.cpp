@@ -7,7 +7,7 @@ using namespace spectrum::java::ast;
 
 // -- Identifier
 
-const regex id_regex(R"(^[a-z_]\w*)", regex_constants::icase);
+const regex id_regex(R"(^[a-z_]\w*$)", regex_constants::icase);
 
 Identifier::Identifier(string name) : _name {name}
 {
