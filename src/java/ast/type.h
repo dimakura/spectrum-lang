@@ -1,9 +1,9 @@
 #include <string>
 #include <vector>
-#include <stdexcept>
 
 #pragma once
 
+/*
 using namespace std;
 
 namespace spectrum::java::ast {
@@ -17,3 +17,4 @@ namespace spectrum::java::ast {
       string _name;
   };
 }
+*/
