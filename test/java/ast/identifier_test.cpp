@@ -16,76 +16,73 @@ TEST_CASE ( "Identifiers" )
   }
 }
 
-/*
-BOOST_AUTO_TEST_CASE ( create_invalid_identifiers )
+
+TEST_CASE ( "Invalid identifiers" )
 {
-  vector<string> invalid_names {"1", "1a", "", "a b"};
+  const vector<string> invalid_names {"1", "1a", "", "a b"};
 
   for (const string& name: invalid_names) {
-    BOOST_CHECK_EXCEPTION(
-      Identifier {name}, 
-      invalid_argument, 
-      [=](const exception& ex) { return ex.what() == "Invalid identifier: " + name; }
-    );
+    REQUIRE_THROWS_WITH ( Identifier {name},  "Invalid identifier: " + name );
   }
 }
 
 // -- QualifiedIdentifier
 
-void test_QualifiedIdentifier(QualifiedIdentifier& qid)
+void test_QualifiedIdentifier(const QualifiedIdentifier& qid)
 {
-  auto ids = qid.identifiers();
+  const auto ids = qid.identifiers();
 
-  BOOST_TEST( ids.size() == 3 );
-  BOOST_TEST( ids[0].name() == "java" );
-  BOOST_TEST( ids[1].name() == "lang" );
-  BOOST_TEST( ids[2].name() == "String" );
+  REQUIRE ( ids.size() == 3 );
+  REQUIRE ( ids[0].name() == "java" );
+  REQUIRE ( ids[1].name() == "lang" );
+  REQUIRE ( ids[2].name() == "String" );
 }
 
-BOOST_AUTO_TEST_CASE ( create_qualified_identifier_from_string )
+TEST_CASE ( "Qualified Identifier: single string" )
 {
-  QualifiedIdentifier qid {"java.lang.String"};
+  const QualifiedIdentifier qid {"java.lang.String"};
   test_QualifiedIdentifier(qid);
 }
 
-BOOST_AUTO_TEST_CASE ( create_qualified_identifier_from_strings )
+
+TEST_CASE ( "Qualified Identifier: array of strings" )
 {
-  vector<string> names {"java", "lang", "String"};
-  QualifiedIdentifier qid {names};
+  const vector<string> names {"java", "lang", "String"};
+  const QualifiedIdentifier qid {names};
   test_QualifiedIdentifier(qid);
 }
 
-BOOST_AUTO_TEST_CASE ( create_qualified_identifier_from_ids )
+
+TEST_CASE ( "Qualified Identifier: array of identifiers" )
 {
-  Identifier i1 {"java"};
-  Identifier i2 {"lang"};
-  Identifier i3 {"String"};
-  vector<Identifier> ids {i1, i2, i3};
-  QualifiedIdentifier qid {ids};
+  const Identifier i1 {"java"};
+  const Identifier i2 {"lang"};
+  const Identifier i3 {"String"};
+  const vector<Identifier> ids {i1, i2, i3};
+  const QualifiedIdentifier qid {ids};
   test_QualifiedIdentifier(qid);
 }
 
 // -- QualifiedIdentifierList
 
-BOOST_AUTO_TEST_CASE ( create_qualified_identifier_list_from_strings )
+TEST_CASE ( "Qualified Identifier List: array of strings" )
 {
-  vector<string> data {"java.lang.String", "java.utils.List"};
-  QualifiedIdentifierList list {data};
-  auto qids = list.qualifiedIdentifiers();
+  const vector<string> data {"java.lang.String", "java.utils.List"};
+  const QualifiedIdentifierList list {data};
+  const auto qids = list.qualifiedIdentifiers();
 
-  BOOST_TEST( qids.size() == 2 );
+  REQUIRE( qids.size() == 2 );
   test_QualifiedIdentifier(qids[0]);
 }
 
-BOOST_AUTO_TEST_CASE ( create_qualified_identifier_list_from_qualified_identifiers )
+TEST_CASE ( "Qualified Identifiers List: array of qualified identifiers" )
 {
-  QualifiedIdentifier q1 {"java.lang.String"};
-  QualifiedIdentifier q2 {"java.utils.List"};
-  vector<QualifiedIdentifier> data {q1, q2};
-  QualifiedIdentifierList list {data}; 
-  auto qids = list.qualifiedIdentifiers();
+  const QualifiedIdentifier q1 {"java.lang.String"};
+  const QualifiedIdentifier q2 {"java.utils.List"};
+  const vector<QualifiedIdentifier> data {q1, q2};
+  const QualifiedIdentifierList list {data}; 
+  const auto qids = list.qualifiedIdentifiers();
 
-  BOOST_TEST( qids.size() == 2 );
+  REQUIRE( qids.size() == 2 );
   test_QualifiedIdentifier(qids[0]);
 }
-*/
