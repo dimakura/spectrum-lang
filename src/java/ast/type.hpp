@@ -3,18 +3,16 @@
 
 #pragma once
 
-/*
 using namespace std;
 
 namespace spectrum::java::ast {
   class BasicType {
     public:
-      BasicType(string);
+      BasicType(const string&);
       ~BasicType() = default;
-      string name();
+      string name() const;
 
     private:
       string _name;
   };
 }
-*/

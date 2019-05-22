@@ -1,8 +1,7 @@
-#include "type.h"
 #include <regex>
 #include <stdexcept>
+#include "type.hpp"
 
-/*
 using namespace std;
 using namespace spectrum::java::ast;
 
@@ -10,14 +9,13 @@ using namespace spectrum::java::ast;
 
 const regex basic_type_regex(R"(^(byte|short|char|int|long|float|double|boolean)$)");
 
-BasicType::BasicType(string name) : _name {name}
+BasicType::BasicType(const string& name) : _name {name}
 {
   if (!regex_match(name, basic_type_regex))
-    throw new invalid_argument("Invalid basic type: " + name);
+    throw invalid_argument("Invalid basic type: " + name);
 }
 
-string BasicType::name()
+string BasicType::name() const
 {
   return _name;
 }
-*/

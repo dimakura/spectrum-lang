@@ -10,8 +10,8 @@ TEST_CASE ( "Identifiers" )
 {
   const vector<string> valid_names {"a", "f1", "_a", "__", "a_b", "a1b", "A", "B1"};
 
-  for (const string& name : valid_names) {
-    const Identifier id {name};
+  for (const string name : valid_names) {
+    const Identifier id(name);
     REQUIRE ( id.name() == name );
   }
 }
