@@ -1,4 +1,5 @@
-#include "java/ast/identifier.h"
+#include <catch2/catch.hpp>
+#include "java/ast/identifier.hpp"
 
 using namespace std;
 using namespace spectrum::java::ast;
@@ -7,11 +8,11 @@ using namespace spectrum::java::ast;
 
 TEST_CASE ( "Identifiers" )
 {
-  constexpr vector<string> valid_names {"a", "f1", "_a", "__", "a_b", "a1b", "A", "B1"};
+  const vector<string> valid_names {"a", "f1", "_a", "__", "a_b", "a1b", "A", "B1"};
 
   for (const string& name : valid_names) {
-    Identifier id {name};
-    BOOST_TEST( id.name() == name );
+    const Identifier id {name};
+    REQUIRE ( id.name() == name );
   }
 }
 

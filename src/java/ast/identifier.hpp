@@ -9,9 +9,9 @@ using namespace std;
 namespace spectrum::java::ast {
   class Identifier {
     public:
-      Identifier(string);
+      Identifier(const string&);
       ~Identifier() = default;
-      string name();
+      string name() const;
 
     private:
       string _name;
@@ -23,7 +23,7 @@ namespace spectrum::java::ast {
       QualifiedIdentifier(const vector<string>&);
       QualifiedIdentifier(const vector<Identifier>&);
       ~QualifiedIdentifier() = default;
-      vector<Identifier> identifiers();
+      vector<Identifier> identifiers() const;
 
     private:
       vector<Identifier> _ids;
@@ -34,7 +34,7 @@ namespace spectrum::java::ast {
       QualifiedIdentifierList(const vector<string>&);
       QualifiedIdentifierList(const vector<QualifiedIdentifier>&);
       ~QualifiedIdentifierList() = default;
-      vector<QualifiedIdentifier> qualifiedIdentifiers();
+      vector<QualifiedIdentifier> qualifiedIdentifiers() const;
 
     private:
       vector<QualifiedIdentifier> _qids;
