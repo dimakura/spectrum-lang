@@ -11,7 +11,7 @@ namespace spectrum::java::ast {
     public:
       Identifier(const string&);
       ~Identifier() = default;
-      string name() const;
+      const string& name() const;
 
     private:
       string _name;
@@ -23,7 +23,7 @@ namespace spectrum::java::ast {
       QualifiedIdentifier(const vector<string>&);
       QualifiedIdentifier(const vector<Identifier>&);
       ~QualifiedIdentifier() = default;
-      vector<Identifier> identifiers() const;
+      const vector<Identifier>& identifiers() const;
 
     private:
       vector<Identifier> _ids;
@@ -34,7 +34,7 @@ namespace spectrum::java::ast {
       QualifiedIdentifierList(const vector<string>&);
       QualifiedIdentifierList(const vector<QualifiedIdentifier>&);
       ~QualifiedIdentifierList() = default;
-      vector<QualifiedIdentifier> qualifiedIdentifiers() const;
+      const vector<QualifiedIdentifier>& qualifiedIdentifiers() const;
 
     private:
       vector<QualifiedIdentifier> _qids;

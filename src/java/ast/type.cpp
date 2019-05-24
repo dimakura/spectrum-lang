@@ -15,7 +15,7 @@ BasicType::BasicType(const string& name) : _name {name}
     throw invalid_argument("Invalid basic type: " + name);
 }
 
-string BasicType::name() const
+const string& BasicType::name() const
 {
   return _name;
 }

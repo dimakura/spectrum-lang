@@ -10,7 +10,7 @@ namespace spectrum::java::ast {
     public:
       BasicType(const string&);
       ~BasicType() = default;
-      string name() const;
+      const string& name() const;
 
     private:
       string _name;

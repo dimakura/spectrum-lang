@@ -16,7 +16,7 @@ Identifier::Identifier(const string& name) : _name {name}
   }
 }
 
-string Identifier::name() const
+const string& Identifier::name() const
 {
   return _name;
 }
@@ -48,7 +48,7 @@ QualifiedIdentifier::QualifiedIdentifier(const vector<Identifier>& ids)
     _ids.push_back(id);
 }
 
-vector<Identifier> QualifiedIdentifier::identifiers() const
+const vector<Identifier>& QualifiedIdentifier::identifiers() const
 {
   return _ids;
 }
@@ -67,7 +67,7 @@ QualifiedIdentifierList::QualifiedIdentifierList(const vector<QualifiedIdentifie
     _qids.push_back(qid);
 }
 
-vector<QualifiedIdentifier> QualifiedIdentifierList::qualifiedIdentifiers() const
+const vector<QualifiedIdentifier>& QualifiedIdentifierList::qualifiedIdentifiers() const
 {
   return _qids;
 }
