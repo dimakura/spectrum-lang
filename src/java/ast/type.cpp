@@ -7,7 +7,7 @@ using namespace spectrum::java::ast;
 
 // -- BasicType
 
-const regex basic_type_regex(R"(^(byte|short|char|int|long|float|double|boolean)$)");
+static const regex basic_type_regex(R"(^(byte|short|char|int|long|float|double|boolean)$)");
 
 BasicType::BasicType(const string& name) : _name {name}
 {
