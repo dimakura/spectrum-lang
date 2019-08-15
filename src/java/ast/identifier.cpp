@@ -1,22 +1,22 @@
-#include "identifier.h"
 #include <regex>
 #include <boost/algorithm/string.hpp>
+#include "identifier.hpp"
 
 using namespace std;
 using namespace spectrum::java::ast;
 
 // -- Identifier
 
-const regex id_regex(R"(^[a-z_]\w*)", regex_constants::icase);
+static const regex id_regex(R"(^[a-z_]\w*$)", regex_constants::icase);
 
-Identifier::Identifier(string name) : _name {name}
+Identifier::Identifier(const string& name) : _name {name}
 {
   if (!regex_match(name, id_regex)) {
     throw invalid_argument("Invalid identifier: " + name);
   }
 }
 
-string Identifier::name()
+const string& Identifier::name() const
 {
   return _name;
 }
@@ -48,7 +48,7 @@ QualifiedIdentifier::QualifiedIdentifier(const vector<Identifier>& ids)
     _ids.push_back(id);
 }
 
-vector<Identifier> QualifiedIdentifier::identifiers()
+const vector<Identifier>& QualifiedIdentifier::identifiers() const
 {
   return _ids;
 }
@@ -67,7 +67,7 @@ QualifiedIdentifierList::QualifiedIdentifierList(const vector<QualifiedIdentifie
     _qids.push_back(qid);
 }
 
-vector<QualifiedIdentifier> QualifiedIdentifierList::qualifiedIdentifiers()
+const vector<QualifiedIdentifier>& QualifiedIdentifierList::qualifiedIdentifiers() const
 {
   return _qids;
 }
